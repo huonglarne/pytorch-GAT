@@ -1,3 +1,8 @@
+## Run with haca
+    TMPDIR="/nas/tmp" conda create --prefix /nas/huong/env/gat python=3.8
+    sudo apt update
+    pip install -r requirements.txt
+
 ## GAT - Graph Attention Network (PyTorch) :computer: + graphs + :mega: = :heart:
 This repo contains a PyTorch implementation of the original GAT paper (:link: [Veličković et al.](https://arxiv.org/abs/1710.10903)). <br/>
 It's aimed at making it **easy to start playing and learning** about GAT and GNNs in general. <br/>
