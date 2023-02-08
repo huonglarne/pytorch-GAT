@@ -1,4 +1,22 @@
-## Run with haca
+## Run with Moreh
+
+    conda create -n gat python=3.8
+    pip install -r requirements.txt
+    update-moreh --force
+
+
+Train
+
+    python training_script_cora.py
+    python training_script_ppi.py
+
+
+Error
+
+    python dummy.py
+
+
+## Run with A100
     TMPDIR="/nas/tmp" conda create --prefix /nas/huong/env/gat python=3.8
     sudo apt update
     pip install -r requirements.txt
