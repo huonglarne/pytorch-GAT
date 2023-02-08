@@ -1,0 +1,38 @@
+(/nas/huong/env/gat) ubuntu@moreh-test-vm09:/nas/huong/projects/pytorch-GAT$ python training_script_cora.py
+[2023-02-07 16:22:36.897] [info] Requesting resources for KT AI Accelerator from the server...
+[2023-02-07 16:22:37.918] [info] Initializing the worker daemon for KT AI Accelerator
+[2023-02-07 16:22:38.585] [info] [1/1] Connecting to resources on the server (192.168.110.0:24157)...
+[2023-02-07 16:22:38.601] [info] Establishing links to the resources...
+[2023-02-07 16:22:38.621] [info] KT AI Accelerator is ready to use.
+Traceback (most recent call last):
+  File "training_script_cora.py", line 243, in <module>
+    train_gat_cora(get_training_args())
+  File "training_script_cora.py", line 171, in train_gat_cora
+    main_loop(phase=LoopPhase.TRAIN, epoch=epoch)
+  File "training_script_cora.py", line 60, in main_loop
+    nodes_unnormalized_scores = gat(graph_data)[0].index_select(node_dim, node_indices)
+  File "/nas/huong/env/gat/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/nas/huong/projects/pytorch-GAT/models/definitions/GAT.py", line 50, in forward
+    return self.gat_net(data)
+  File "/nas/huong/env/gat/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/nas/huong/env/gat/lib/python3.8/site-packages/torch/nn/modules/container.py", line 117, in forward
+    input = module(input)
+  File "/nas/huong/env/gat/lib/python3.8/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/nas/huong/projects/pytorch-GAT/models/definitions/GAT.py", line 235, in forward
+    attentions_per_edge = self.neighborhood_aware_softmax(scores_per_edge, edge_index[self.trg_nodes_dim], num_of_nodes)
+  File "/nas/huong/projects/pytorch-GAT/models/definitions/GAT.py", line 284, in neighborhood_aware_softmax
+    neigborhood_aware_denominator = self.sum_edge_scores_neighborhood_aware(exp_scores_per_edge, trg_index, num_of_nodes)
+  File "/nas/huong/projects/pytorch-GAT/models/definitions/GAT.py", line 304, in sum_edge_scores_neighborhood_aware
+    neighborhood_sums.scatter_add_(self.nodes_dim, trg_index_broadcasted, exp_scores_per_edge)
+  File "/nas/huong/env/gat/lib/python3.8/site-packages/moreh/driver/pytorch/torch/wrapper/moreh_wrapper.py", line 113, in wrapper
+    raise instance
+  File "/nas/huong/env/gat/lib/python3.8/site-packages/moreh/driver/pytorch/torch/wrapper/moreh_wrapper.py", line 54, in wrapper
+    return moreh_function(
+  File "/nas/huong/env/gat/lib/python3.8/site-packages/moreh/driver/pytorch/torch/tensor.py", line 6859, in scatter_add_
+    assert all(
+AssertionError
+(/nas/huong/env/gat) ubuntu@moreh-test-vm09:/nas/huong/projects/pytorch-GAT$ tmux capture-pane -pS -300 > run.log
+
